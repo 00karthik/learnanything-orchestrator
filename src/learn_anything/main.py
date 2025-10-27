@@ -5,6 +5,7 @@ import os
 import json
 from datetime import datetime
 from learn_anything.crew import ComprehensiveTutorialGeneratorCrew
+from learn_anything.tools import build_html_document
 
 # Input fields expected by tasks/agents
 INPUT_FIELDS = [
@@ -47,12 +48,20 @@ def _build_inputs_from_args(args, interactive=False):
 def run():
     """Run the crew, prompting for inputs interactively when invoked via console script."""
     inputs = _prompt_for_inputs()
-    ComprehensiveTutorialGeneratorCrew().crew().kickoff(inputs=inputs)
+    result = ComprehensiveTutorialGeneratorCrew().crew().kickoff(inputs=inputs)
+    try:
+        _rebuild_html_output(result, inputs)
+    except Exception as e:
+        print(f"Warning: could not rebuild HTML output: {e}")
 
 
 def cmd_run(args):
     inputs = _build_inputs_from_args(args, interactive=args.interactive)
     result = ComprehensiveTutorialGeneratorCrew().crew().kickoff(inputs=inputs)
+    try:
+        _rebuild_html_output(result, inputs)
+    except Exception as e:
+        print(f"Warning: could not rebuild HTML output: {e}")
     try:
         _save_outputs_after_run(result, args)
     except Exception as e:
@@ -105,6 +114,51 @@ def cmd_test(args):
         )
     except Exception as e:
         raise Exception(f"An error occurred while testing the crew: {e}")
+
+
+def _get_task_raw_output(result, task_name):
+    tasks_output = getattr(result, "tasks_output", None)
+    if not tasks_output:
+        return ""
+    for item in tasks_output:
+        # Support both dict-like and object-like results
+        name = None
+        raw = None
+        output = None
+        if isinstance(item, dict):
+            name = item.get("name")
+            raw = item.get("raw")
+            output = item.get("output")
+        else:
+            name = getattr(item, "name", None)
+            raw = getattr(item, "raw", None)
+            output = getattr(item, "output", None)
+        if name == task_name:
+            if isinstance(raw, str) and raw.strip():
+                return raw
+            if isinstance(output, str) and output.strip():
+                return output
+    return ""
+
+
+def _rebuild_html_output(result, inputs):
+    topic = (inputs or {}).get("topic", "tutorial").strip() or "tutorial"
+    output_dir = os.path.join(os.getcwd(), "outputs")
+    _ensure_dir(output_dir)
+    safe_topic = _safe_filename(topic)
+    output_path = os.path.join(output_dir, f"{safe_topic}_tutorial.html")
+
+    compiled_book = _get_task_raw_output(result, "compile_comprehensive_tutorial_book")
+    if not compiled_book:
+        return
+
+    curated_resources = _get_task_raw_output(result, "curate_and_verify_resources")
+    assessments = _get_task_raw_output(result, "create_assessments_and_exercises")
+
+    html = build_html_document(topic, compiled_book, curated_resources, assessments)
+    with open(output_path, "w", encoding="utf-8") as html_file:
+        html_file.write(html)
+
 
 
 def _extract_text_result(result):
