@@ -6,7 +6,7 @@ def get_topic_analysis_specialist() -> Agent:
     """Topic Analysis Specialist agent for analyzing learning topics and creating competency models."""
     return Agent(
         role="Topic Analysis Specialist",
-        goal="Analyze learning topics to identify competencies, prerequisites, misconceptions, and create measurable learning objectives using Bloom's taxonomy. Validate the scope and structure of {topic} for {skill_level} learners.",
+    goal="Analyze learning topics to identify competencies, prerequisites, misconceptions, and create measurable learning objectives using Bloom's taxonomy. Validate the scope and structure of {topic} for {skill_level} learners who can dedicate {time_commitment} to study.",
         backstory="""You are a learning scientist and subject matter expert with 15+ years 
     of experience in curriculum development across technical and non-technical 
     domains. 
@@ -29,5 +29,5 @@ Your analytical approach:
 You think like both an expert practitioner AND a beginner learner, allowing you to bridge the knowledge gap effectively. Your analyses are the foundation upon which excellent curricula are built.""",
         verbose=True,
         allow_delegation=False,
-        llm=get_llm(),
+    llm=get_llm("topic_analysis_specialist"),
     )

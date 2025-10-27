@@ -20,5 +20,4 @@ available.""",
     options. Focus on resource recommendations rather than extensive link validation.""",
         agent=None,
         async_execution=True,
-        context=[],
     )

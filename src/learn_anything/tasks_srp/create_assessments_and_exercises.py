@@ -25,7 +25,7 @@ def get_create_assessments_and_exercises_task() -> Task:
 - Progress tracking and milestone celebrations
 
 **4. COMPREHENSIVE EVALUATION**
-- Capstone projects aligned with {assessment_goal}
+- Capstone projects aligned with the proficiency expected of {skill_level} learners
 - Final assessment covering all modules
 - Mastery criteria and certification requirements
 - Performance analytics and improvement suggestions
@@ -38,5 +38,4 @@ Create assessments that truly measure understanding and provide actionable feedb
     answer keys.""",
         agent=None,
         async_execution=True,
-        context=[],
     )

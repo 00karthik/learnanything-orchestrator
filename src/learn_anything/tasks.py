@@ -13,7 +13,7 @@ from .tasks_srp import (
     get_curate_and_verify_resources_task,
     get_create_assessments_and_exercises_task,
     get_compile_comprehensive_tutorial_task,
-    get_convert_tutorial_to_pdf_format_task,
+    get_convert_tutorial_to_html_format_task,
 )
 
 __all__ = [
@@ -24,5 +24,5 @@ __all__ = [
     "get_curate_and_verify_resources_task",
     "get_create_assessments_and_exercises_task",
     "get_compile_comprehensive_tutorial_task",
-    "get_convert_tutorial_to_pdf_format_task",
+    "get_convert_tutorial_to_html_format_task",
 ]

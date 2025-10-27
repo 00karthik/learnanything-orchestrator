@@ -12,7 +12,7 @@ from .tutorial_compiler import get_tutorial_compiler
 from .chapter_creator_1 import get_chapter_creator_1
 from .chapter_creator_2 import get_chapter_creator_2
 from .structure_analyzer import get_structure_analyzer
-from .pdf_document_generator import get_pdf_document_generator
+from .html_document_generator import get_html_document_generator
 
 __all__ = [
     "get_topic_analysis_specialist",
@@ -22,5 +22,5 @@ __all__ = [
     "get_chapter_creator_1",
     "get_chapter_creator_2",
     "get_structure_analyzer",
-    "get_pdf_document_generator",
+    "get_html_document_generator",
 ]

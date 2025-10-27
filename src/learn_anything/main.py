@@ -10,13 +10,7 @@ from learn_anything.crew import ComprehensiveTutorialGeneratorCrew
 INPUT_FIELDS = [
     "topic",
     "skill_level",
-    "assessment_goal",
-    "cost_optimization",
     "time_commitment",
-    "learning_pace",
-    "learning_style",
-    "goal",
-    "constraints_preferences",
 ]
 
 
@@ -212,13 +206,7 @@ def _build_parser():
         sp.add_argument("--interactive", action="store_true", help="Prompt for any missing inputs interactively")
         sp.add_argument("--topic")
         sp.add_argument("--skill-level")
-        sp.add_argument("--assessment-goal")
-        sp.add_argument("--cost-optimization")
         sp.add_argument("--time-commitment")
-        sp.add_argument("--learning-pace")
-        sp.add_argument("--learning-style")
-        sp.add_argument("--goal")
-        sp.add_argument("--constraints-preferences")
         # output control
         sp.add_argument("--output-dir", help="Directory to save outputs (default: ./outputs)")
         sp.add_argument("--output-basename", help="Base filename for outputs (default: topic)")

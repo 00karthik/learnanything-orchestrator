@@ -14,5 +14,5 @@ def get_tutorial_compiler() -> Agent:
     that readers can follow independently.""",
         verbose=True,
         allow_delegation=False,
-        llm=get_llm(),
+        llm=get_llm("tutorial_compiler"),
     )

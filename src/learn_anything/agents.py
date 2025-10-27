@@ -13,7 +13,7 @@ from .agents_srp import (
     get_chapter_creator_1,
     get_chapter_creator_2,
     get_structure_analyzer,
-    get_pdf_document_generator,
+    get_html_document_generator,
 )
 
 __all__ = [
@@ -24,5 +24,5 @@ __all__ = [
     "get_chapter_creator_1",
     "get_chapter_creator_2",
     "get_structure_analyzer",
-    "get_pdf_document_generator",
+    "get_html_document_generator",
 ]

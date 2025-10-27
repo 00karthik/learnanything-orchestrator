@@ -40,5 +40,4 @@ Format as a complete tutorial book that readers can use independently to master 
     resources and references, and (4) Assessment materials with quizzes and projects. 
     The content should be self-contained and book-like in structure.""",
         agent=None,
-        context=[],
     )
