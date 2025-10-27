@@ -1,0 +1,521 @@
+---
+analyze_topic_and_requirements:
+  description: |
+    You are analyzing the topic **{topic}** to create a validated foundation for curriculum design.
+
+    LEARNER CONTEXT:
+    - Topic: {topic}
+    - Skill Level: {skill_level}
+    - Time Commitment: {time_commitment}
+    - Learning Pace: {learning_pace}
+    - Learning Style: {learning_style}
+    - Goal: {goal}
+    - Constraints/Preferences: {constraints_preferences}
+
+    ═══════════════════════════════════════════════════════════════
+    YOUR ANALYSIS MUST COVER 5 KEY AREAS:
+    ═══════════════════════════════════════════════════════════════
+
+    1. COMPETENCY MODEL (Skill Hierarchy)
+    ───────────────────────────────────────────────────────────────
+    Map the topic into a hierarchical competency model using Bloom's Taxonomy levels:
+
+    **Level 1: AWARENESS / REMEMBERING**
+    - What learners should recognize and recall
+    - Fundamental concepts and terminology
+    - Basic definitions and context
+    Example skills: "Define container", "Identify orchestration tools", "List Kubernetes components"
+
+    **Level 2: COMPREHENSION / UNDERSTANDING**
+    - What learners should understand and explain
+    - Relationships between concepts
+    - How things work and why they matter
+    Example skills: "Explain how containers differ from VMs", "Describe pod lifecycle", "Interpret kubectl output"
+
+    **Level 3: APPLICATION / APPLYING**
+    - What learners should be able to do
+    - Practical skills and hands-on tasks
+    - Using concepts in new situations
+    Example skills: "Deploy an application to Kubernetes", "Create a service manifest", "Scale a deployment"
+
+    **Level 4: ANALYSIS (if time permits)**
+    - What learners should be able to evaluate and compare
+    - Troubleshooting and debugging
+    - Decision-making between alternatives
+    Example skills: "Debug pod failures", "Choose between deployment strategies", "Analyze cluster performance"
+
+    **Level 5+: SYNTHESIS/EVALUATION (typically beyond beginner scope)**
+    - Advanced design, optimization, production patterns
+    - Only include if skill_level is advanced and time allows
+
+    For each level, list 5-8 specific skills using action verbs.
+
+    2. PREREQUISITE ANALYSIS
+    ───────────────────────────────────────────────────────────────
+    Identify what learners need to know BEFORE starting:
+
+    **CRITICAL PREREQUISITES (Must Have):**
+    For each prerequisite:
+    - Skill name (e.g., "Basic command line usage")
+    - Why it's required (e.g., "Kubernetes is managed via CLI tools")
+    - How to validate (e.g., "Can navigate directories, run commands with flags")
+    - Risk if missing (e.g., "Learner will struggle with kubectl syntax")
+
+    **HELPFUL PREREQUISITES (Nice to Have):**
+    For each:
+    - Skill name
+    - Why it helps (makes learning easier/faster)
+    - Workaround if missing (can be learned just-in-time)
+
+    **KNOWLEDGE GAP IDENTIFICATION:**
+    - Common gaps in prerequisite knowledge for {skill_level} learners
+    - Which prerequisites can be taught in "Module 0" if needed
+    - Estimated time to cover gaps (if we need to include them)
+
+    Example format:
+
+    CRITICAL:
+
+    Command Line Basics
+    Why: Kubernetes uses kubectl CLI for all operations
+    Validation: Can cd, ls, run programs with flags
+    Risk: Won't be able to follow hands-on exercises
+
+    HELPFUL:
+
+    YAML Syntax
+    Why: Kubernetes configs are YAML
+    Workaround: Can teach YAML basics in 5-10 minutes within curriculum
+
+
+    3. COMMON MISCONCEPTIONS
+    ───────────────────────────────────────────────────────────────
+    Research and list common misunderstandings about {topic}:
+
+    For each misconception:
+    - **What learners often think**: The incorrect belief
+    - **Why it's wrong**: The reality
+    - **How to address**: Teaching strategy to correct it
+    - **When to address**: Which module/lesson should tackle it
+
+    Example:
+
+    Misconception: "Kubernetes is just Docker for production"
+    Reality: Kubernetes is a container orchestration platform; Docker is a container runtime.
+    K8s can use Docker but also containerd, CRI-O, etc.
+    Address: Clarify in Module 1 with clear definitions and a comparison table
+    Timing: Lesson M1.L1 or M1.L2
+
+    Identify 5-10 misconceptions specific to {topic} at {skill_level}.
+
+    4. MEASURABLE LEARNING OBJECTIVES
+    ───────────────────────────────────────────────────────────────
+    Define 5-8 top-level learning outcomes for the entire curriculum.
+
+    **Requirements:**
+    - Use Bloom's Taxonomy action verbs (avoid "understand", "learn", "know")
+    - Be specific and measurable
+    - Align with learner's goal: {goal}
+    - Be achievable within time constraint: {time_commitment}
+    - Progress from lower to higher cognitive levels
+
+    **Bloom's Action Verbs by Level:**
+    - Remember: Define, List, Identify, Label, Name, State
+    - Understand: Explain, Describe, Summarize, Classify, Compare, Interpret
+    - Apply: Execute, Implement, Use, Demonstrate, Solve, Apply
+    - Analyze: Differentiate, Distinguish, Examine, Compare, Debug
+    - Evaluate: Judge, Critique, Assess, Evaluate
+    - Create: Design, Construct, Develop, Formulate, Build
+
+    Example (BAD):
+    ❌ "Understand Kubernetes concepts"
+
+    Example (GOOD):
+    ✅ "Explain the role of pods, services, and deployments in a Kubernetes cluster"
+    ✅ "Deploy a containerized application using kubectl and YAML manifests"
+    ✅ "Differentiate between ClusterIP, NodePort, and LoadBalancer service types"
+
+    List 5-8 objectives that span multiple Bloom levels.
+
+    5. SCOPE VALIDATION
+    ───────────────────────────────────────────────────────────────
+    Validate what's realistically achievable given constraints:
+
+    **Time Analysis:**
+    - Total available time: {time_commitment}
+    - Parse into: X minutes per day, Y days per week, Z weeks
+    - Calculate total minutes: (X * Y * Z)
+    - Time allocation recommendation:
+      * 70% core content
+      * 20% exercises/practice
+      * 10% buffer/review
+
+    **Realistic Scope Statement:**
+    Given {time_commitment} for {skill_level} learners, this curriculum should:
+    - Cover: [What CAN be covered comprehensively]
+    - Touch on: [What can be introduced but not mastered]
+    - Exclude: [What should be left for future learning]
+
+    Example:
+    Time: 10 min/day, 5 days/week, 3 weeks = 150 minutes (2.5 hours)
+    Realistic Scope:
+
+    CAN cover: Core Kubernetes concepts (pods, deployments, services), basic kubectl commands,
+    architecture understanding, hands-on with playground
+    CAN touch on: ConfigMaps, namespaces, basic troubleshooting
+    MUST exclude: Advanced networking, Helm, operators, security policies, production best
+    practices, certification prep
+
+    Scope Statement: "This curriculum provides foundational Kubernetes knowledge suitable for
+    casual learning—understanding what Kubernetes is, why it's used, and core architectural
+    concepts. Learners will gain hands-on exposure via playgrounds but won't achieve
+    production-readiness or certification level."
+    **Constraint Analysis:**
+    Review {constraints_preferences} and identify:
+    - Technical constraints (no local setup, need free resources)
+    - Learning constraints (prefer videos, avoid math-heavy content)
+    - Accessibility needs (screen reader support, color blindness)
+    - How these affect curriculum design decisions
+
+    ═══════════════════════════════════════════════════════════════
+    INDUSTRY STANDARDS RESEARCH
+    ═══════════════════════════════════════════════════════════════
+
+    Research current standards for {topic}:
+    - What skills do job postings commonly require?
+    - What certifications exist (CKAD, CKA for Kubernetes)?
+    - What do popular bootcamps/courses cover?
+    - What do official docs emphasize?
+    - What changed recently in this field?
+
+    Use this to inform:
+    - Which skills are most valuable to prioritize
+    - Industry terminology to use consistently
+    - Common tools/platforms learners should know
+    - Skills that are outdated or less relevant now
+  expected_output: |-
+    Return your analysis in this structure:
+    TOPIC ANALYSIS: {topic}
+    ═══════════════════════════════════════════════════════════════
+
+    COMPETENCY MODEL
+    ───────────────────────────────────────────────────────────────
+    Level 1 - AWARENESS:
+
+
+    [Skill 1]
+    [Skill 2]
+    ...
+
+    Level 2 - COMPREHENSION:
+
+    [Skill 1]
+    ...
+
+    Level 3 - APPLICATION:
+
+    [Skill 1]
+    ...
+
+
+    PREREQUISITE ANALYSIS
+    ───────────────────────────────────────────────────────────────
+    CRITICAL PREREQUISITES:
+
+
+    [Prerequisite 1]
+
+    Why: [Explanation]
+    Validation: [How to check]
+    Risk if missing: [Impact]
+
+
+
+    HELPFUL PREREQUISITES:
+
+    [Prerequisite 1]
+
+    Why: [Benefit]
+    Workaround: [Alternative]
+
+
+
+    KNOWLEDGE GAPS TO ADDRESS:
+
+
+
+
+    COMMON MISCONCEPTIONS
+    ───────────────────────────────────────────────────────────────
+
+
+    Misconception 1: "[What learners think]"
+    Reality: [Correct understanding]
+    Address: [Teaching strategy]
+    When: [Module/lesson]
+
+
+    LEARNING OBJECTIVES (Top-Level)
+    ───────────────────────────────────────────────────────────────
+    By the end of this curriculum, learners will be able to:
+    [Objective 1 - Remember/Understand level]
+    [Objective 2 - Understand level]
+    [Objective 3 - Apply level]
+    [Objective 4 - Apply level]
+    [Objective 5 - Analyze level if appropriate]
+    SCOPE VALIDATION
+    ───────────────────────────────────────────────────────────────
+    TIME ANALYSIS:
+
+
+    Total time: [X minutes]
+    Allocation: 70% content, 20% practice, 10% buffer
+
+    REALISTIC SCOPE:
+    ✅ CAN comprehensively cover:
+
+    [Topic area 1]
+    [Topic area 2]
+
+    ⚠️  CAN introduce (but not master):
+
+    [Topic area 3]
+
+    ❌ MUST exclude from this curriculum:
+
+    [Topic area 4]
+    [Topic area 5]
+
+    SCOPE STATEMENT:
+    "[2-3 sentence summary of what this curriculum realistically achieves]"
+    CONSTRAINT CONSIDERATIONS:
+
+    [Constraint 1]: [How it affects design]
+    [Constraint 2]: [How it affects design]
+
+
+    INDUSTRY STANDARDS
+    ───────────────────────────────────────────────────────────────
+
+
+    Key skills in demand: [List]
+    Relevant certifications: [List]
+    Standard tools/platforms: [List]
+    Recent changes: [What's new/deprecated]
+    Terminology standards: [Key terms to use]
+
+
+    RECOMMENDATIONS FOR CURRICULUM DESIGN
+    ───────────────────────────────────────────────────────────────
+    Based on this analysis:
+
+
+    Module 0 (Prerequisites) needed: [Yes/No, what to cover]
+    Suggested module count: [4-6 modules]
+    Key teaching strategies: [e.g., lots of examples, hands-on labs]
+    Risk areas: [Topics that typically confuse learners]
+    Success metrics: [How to measure if learning objectives are met]
+
+    ═══════════════════════════════════════════════════════════════
+  agent: topic_analysis_specialist
+analyze_chapter_structure:
+  description: "Analyze {topic} to determine the optimal book chapter structure for
+    a comprehensive tutorial book. Based on the topic analysis and {cost_optimization}
+    settings, define:\n\n1. **Chapter Count**: Determine optimal number of chapters
+    (typically 4-12 chapters based on topic complexity)\n2. **Chapter Specifications**:
+    For each chapter, define:\n   - Chapter title and main focus area\n   - Key concepts
+    and learning objectives\n   - Prerequisites and chapter dependencies  \n   - Content
+    depth and complexity level\n   - Estimated content requirements\n\n3. **Book Flow
+    and Progression**: Create logical chapter sequence that builds knowledge progressively\n4.
+    **Parallel Content Creation Plan**: Assign chapters to available content creators
+    for efficient parallel processing\n5. **Chapter Dependencies**: Identify which
+    chapters must be sequential vs which can be created independently\n\nOutput a
+    clear book structure plan with specific chapter assignments for each content creator
+    agent."
+  expected_output: 'Detailed book chapter structure including: exact number of chapters
+    needed, specific chapter titles and objectives, content creator assignments for
+    parallel processing, and chapter dependency mapping. Format as structured book
+    outline with clear assignments.'
+  agent: structure_analyzer
+  context:
+  - analyze_topic_and_requirements
+create_assigned_chapters_1:
+  description: "Generate comprehensive tutorial book content for chapters assigned
+    to Content Creator 1 based on the book structure analysis for {topic}. Create
+    complete book chapters including:\n\n**Content Creation Based on {cost_optimization}:**\n-
+    **AGGRESSIVE**: Core concepts with concise explanations, essential examples\n-
+    **BALANCED**: Thorough explanations with comprehensive examples and moderate depth
+    \ \n- **QUALITY**: Detailed comprehensive content with multiple examples, deep
+    explanations, and extensive coverage\n\n**Book Chapter Components:**\n1. **Chapter
+    Introduction**: Overview of what will be covered and learning objectives\n2. **Detailed
+    Theoretical Explanations**: Complete concepts, principles, background knowledge,
+    and theory\n3. **Step-by-Step Procedures**: Clear, actionable instructions and
+    techniques with screenshots/diagrams where helpful\n4. **Practical Examples and
+    Case Studies**: Real-world applications, scenarios, and worked examples\n5. **Hands-On
+    Exercises**: Practice activities with detailed solutions and explanations\n6.
+    **Troubleshooting Guides**: Common problems, error messages, and solutions\n7.
+    **Best Practices and Expert Tips**: Professional insights, recommendations, and
+    advanced techniques\n8. **Chapter Summary**: Key takeaways and what was learned\n9.
+    **Chapter Quiz**: 5-10 questions with detailed answers and explanations\n\nResearch
+    current information using available tools to ensure content accuracy and relevance.
+    Work only on chapters specifically assigned to Creator 1 in the book structure
+    plan."
+  expected_output: Complete comprehensive book chapters for specifically assigned
+    chapters with appropriate depth based on cost optimization. Include detailed theoretical
+    content, step-by-step procedures, practical examples, exercises with solutions,
+    troubleshooting guides, and chapter assessments needed for readers to master the
+    material.
+  agent: chapter_creator_1
+  context:
+  - analyze_chapter_structure
+create_assigned_chapters_2:
+  description: "Generate comprehensive tutorial book content for chapters assigned
+    to Content Creator 2 based on the book structure analysis for {topic}. Create
+    complete book chapters including:\n\n**Content Creation Based on {cost_optimization}:**\n-
+    **AGGRESSIVE**: Core concepts with concise explanations, essential examples\n-
+    **BALANCED**: Thorough explanations with comprehensive examples and moderate depth
+    \ \n- **QUALITY**: Detailed comprehensive content with multiple examples, deep
+    explanations, and extensive coverage\n\n**Book Chapter Components:**\n1. **Chapter
+    Introduction**: Overview of what will be covered and learning objectives\n2. **Detailed
+    Theoretical Explanations**: Complete concepts, principles, background knowledge,
+    and theory\n3. **Step-by-Step Procedures**: Clear, actionable instructions and
+    techniques with screenshots/diagrams where helpful\n4. **Practical Examples and
+    Case Studies**: Real-world applications, scenarios, and worked examples\n5. **Hands-On
+    Exercises**: Practice activities with detailed solutions and explanations\n6.
+    **Troubleshooting Guides**: Common problems, error messages, and solutions\n7.
+    **Best Practices and Expert Tips**: Professional insights, recommendations, and
+    advanced techniques\n8. **Chapter Summary**: Key takeaways and what was learned\n9.
+    **Chapter Quiz**: 5-10 questions with detailed answers and explanations\n\nResearch
+    current information using available tools to ensure content accuracy and relevance.
+    Work only on chapters specifically assigned to Creator 2 in the book structure
+    plan."
+  expected_output: Complete comprehensive book chapters for specifically assigned
+    chapters with appropriate depth based on cost optimization. Include detailed theoretical
+    content, step-by-step procedures, practical examples, exercises with solutions,
+    troubleshooting guides, and chapter assessments needed for readers to master the
+    material.
+  agent: chapter_creator_2
+  context:
+  - analyze_chapter_structure
+curate_and_verify_resources:
+  description: "Create a curated list of recommended external learning resources for
+    {topic} including:\n1. **Resource Categories**: Books, websites, online courses,
+    documentation, and tools\n2. **Resource Descriptions**: Brief descriptions of
+    what each resource offers\n3. **Quality Assessment**: Authority, relevance, and
+    skill level match  \n4. **Alternative Sources**: Multiple options for each resource
+    type\n5. **Accessibility Notes**: Free vs paid resources, account requirements\n\nFocus
+    on providing resource recommendations and categories rather than extensive link
+    validation. Provide search terms and resource types when specific URLs aren't
+    available."
+  expected_output: A curated resource guide with recommended learning materials organized
+    by category, including resource descriptions, quality assessments, and alternative
+    options. Focus on resource recommendations rather than extensive link validation.
+  agent: resource_curator
+  async_execution: true
+  context:
+  - create_assigned_chapters_1
+  - create_assigned_chapters_2
+create_assessments_and_exercises:
+  description: |-
+    Design comprehensive assessment components for {topic} including:
+
+    **1. MODULE-SPECIFIC QUIZZES**
+    - 5-10 questions per module with multiple choice, true/false, and short answer formats
+    - Complete answer keys with detailed explanations
+    - Difficulty progression from basic recall to advanced application
+    - Clear scoring rubrics and mastery thresholds
+
+    **2. PRACTICE EXERCISES**
+    - Hands-on activities with step-by-step solutions
+    - Real-world application scenarios
+    - Varying difficulty levels for different learning stages
+    - Self-check mechanisms and progress indicators
+
+    **3. CHECKPOINT ASSESSMENTS**
+    - Module completion checkpoints with immediate feedback
+    - Knowledge gap identification tools
+    - Remediation recommendations for struggling areas
+    - Progress tracking and milestone celebrations
+
+    **4. COMPREHENSIVE EVALUATION**
+    - Capstone projects aligned with {assessment_goal}
+    - Final assessment covering all modules
+    - Mastery criteria and certification requirements
+    - Performance analytics and improvement suggestions
+
+    Create assessments that truly measure understanding and provide actionable feedback to learners.
+  expected_output: 'Complete assessment framework including: detailed module quizzes
+    with questions, answers, and explanations; practice exercises with solutions;
+    checkpoint assessments with feedback mechanisms; and comprehensive evaluation
+    tools. All assessments must include clear rubrics, mastery thresholds, and detailed
+    answer keys.'
+  agent: assessment_designer
+  async_execution: true
+  context:
+  - analyze_chapter_structure
+  - create_assigned_chapters_1
+  - create_assigned_chapters_2
+compile_comprehensive_tutorial_book:
+  description: |-
+    Compile all components into a comprehensive tutorial book for {topic} with these main sections:
+
+    **1. BOOK INTRODUCTION**
+    - Topic overview and what readers will learn
+    - Who this book is for (target audience)
+    - How to use this book effectively
+    - Prerequisites and required knowledge
+
+    **2. COMPREHENSIVE TUTORIAL CONTENT**
+    For each chapter/section:
+    - **Detailed Theoretical Explanations** - Complete concepts, principles, and background knowledge
+    - **Step-by-Step Procedures** - Clear, actionable instructions and techniques
+    - **Practical Examples and Case Studies** - Real-world applications and scenarios
+    - **Hands-On Exercises** - Practice activities with detailed solutions
+    - **Troubleshooting Guides** - Common problems and solutions
+    - **Best Practices and Expert Tips** - Professional insights and recommendations
+
+    **3. SUPPLEMENTARY RESOURCES**
+    - **Recommended Tools and Materials** - What readers need to practice
+    - **External Resources** - Books, websites, and additional learning materials
+    - **Glossary** - Key terms and definitions
+    - **References** - Sources and further reading
+
+    **4. ASSESSMENT AND PRACTICE**
+    - **Chapter Quizzes** - Questions with detailed answers and explanations
+    - **Practice Projects** - Comprehensive exercises to apply knowledge
+    - **Self-Assessment Tools** - Progress tracking and skill evaluation
+    - **Final Mastery Test** - Comprehensive assessment with rubrics
+
+    Format as a complete tutorial book that readers can use independently to master {topic}.
+  expected_output: 'A comprehensive tutorial book with complete chapters covering
+    all aspects of {topic}. Include: (1) Book introduction and usage guide, (2) Detailed
+    tutorial content with explanations, procedures, examples, and exercises, (3) Supplementary
+    resources and references, and (4) Assessment materials with quizzes and projects.
+    The content should be self-contained and book-like in structure.'
+  agent: tutorial_compiler
+  context:
+  - analyze_topic_and_requirements
+  - analyze_chapter_structure
+  - create_assigned_chapters_1
+  - create_assigned_chapters_2
+  - curate_and_verify_resources
+  - create_assessments_and_exercises
+convert_tutorial_book_to_pdf_format:
+  description: "Convert the compiled tutorial book into a professionally formatted
+    document ready for PDF export for {topic}. Transform the book content into a well-structured
+    document with:\n\n1. **Book Structure**: Title page, table of contents, chapter
+    sections, appendices, and index\n2. **Chapter Formatting**: Proper headings, subheadings,
+    numbered sections, bullet points, and consistent typography  \n3. **Content Organization**:
+    Clear chapter progression, step-by-step procedures, examples, and exercises\n4.
+    **Professional Design**: Consistent styling, appropriate spacing, readable fonts,
+    and book-like layout\n5. **PDF-Ready Format**: Structured content optimized for
+    both digital reading and printing\n\nInclude all book components: introduction,
+    chapters, resources, glossary, and assessments. Ensure the final document reads
+    like a professional tutorial book."
+  expected_output: A professionally formatted tutorial book document with proper book
+    structure, chapter organization, and layout ready for PDF conversion. The output
+    should be well-organized with clear chapters, consistent formatting, and include
+    all tutorial book components in a readable, book-like format.
+  agent: pdf_document_generator
+  context:
+  - compile_comprehensive_tutorial_book
