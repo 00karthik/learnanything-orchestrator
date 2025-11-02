@@ -500,22 +500,15 @@ compile_comprehensive_tutorial_book:
   - create_assigned_chapters_2
   - curate_and_verify_resources
   - create_assessments_and_exercises
-convert_tutorial_book_to_pdf_format:
-  description: "Convert the compiled tutorial book into a professionally formatted
-    document ready for PDF export for {topic}. Transform the book content into a well-structured
-    document with:\n\n1. **Book Structure**: Title page, table of contents, chapter
-    sections, appendices, and index\n2. **Chapter Formatting**: Proper headings, subheadings,
-    numbered sections, bullet points, and consistent typography  \n3. **Content Organization**:
-    Clear chapter progression, step-by-step procedures, examples, and exercises\n4.
-    **Professional Design**: Consistent styling, appropriate spacing, readable fonts,
-    and book-like layout\n5. **PDF-Ready Format**: Structured content optimized for
-    both digital reading and printing\n\nInclude all book components: introduction,
-    chapters, resources, glossary, and assessments. Ensure the final document reads
-    like a professional tutorial book."
-  expected_output: A professionally formatted tutorial book document with proper book
-    structure, chapter organization, and layout ready for PDF conversion. The output
-    should be well-organized with clear chapters, consistent formatting, and include
-    all tutorial book components in a readable, book-like format.
-  agent: pdf_document_generator
+convert_tutorial_book_to_html_format:
+  description: |-
+    Convert the compiled tutorial book into a professionally structured HTML document for {topic}.
+    Transform the book content into a well-organized, web-ready experience with semantic
+    markup, internal navigation, and styling hooks for later theming. End result should feel like a
+    polished online textbook with clear sections and reusable components.
+  expected_output: A professionally structured HTML tutorial book with semantic elements, navigation,
+    and styling hooks ready for theming. Chapters, resources, and assessments should be clearly defined
+    in HTML format.
+  agent: html_document_generator
   context:
   - compile_comprehensive_tutorial_book

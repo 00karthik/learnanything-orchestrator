@@ -19,7 +19,7 @@ from .agents import (
     get_chapter_creator_1,
     get_chapter_creator_2,
     get_structure_analyzer,
-    get_pdf_document_generator,
+    get_html_document_generator,
 )
 from .tasks import (
     get_analyze_topic_and_requirements_task,
@@ -29,7 +29,7 @@ from .tasks import (
     get_curate_and_verify_resources_task,
     get_create_assessments_and_exercises_task,
     get_compile_comprehensive_tutorial_task,
-    get_convert_tutorial_to_pdf_format_task,
+    get_convert_tutorial_to_html_format_task,
 )
 
 # Bridge GOOGLE_API_KEY -> GEMINI_API_KEY for LiteLLM/Gemini
@@ -72,8 +72,8 @@ class ComprehensiveTutorialGeneratorCrew:
         return agent
     
     @agent
-    def pdf_document_generator(self) -> Agent:
-        return get_pdf_document_generator()
+    def html_document_generator(self) -> Agent:
+        return get_html_document_generator()
     
 
     
@@ -127,9 +127,9 @@ class ComprehensiveTutorialGeneratorCrew:
         return task
     
     @task
-    def convert_tutorial_to_pdf_format(self) -> Task:
-        task = get_convert_tutorial_to_pdf_format_task()
-        task.agent = self.pdf_document_generator()
+    def convert_tutorial_to_html_format(self) -> Task:
+        task = get_convert_tutorial_to_html_format_task()
+        task.agent = self.html_document_generator()
         task.markdown = False
         return task
     

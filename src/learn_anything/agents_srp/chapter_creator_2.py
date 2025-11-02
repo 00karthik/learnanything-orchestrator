@@ -6,7 +6,7 @@ def get_chapter_creator_2() -> Agent:
     """Book Chapter Creator 2 agent for generating comprehensive tutorial book chapters."""
     return Agent(
         role="Book Chapter Creator 2",
-        goal="Generate comprehensive tutorial book chapters for assigned sections of {topic}. Create detailed, self-contained book chapters including theoretical explanations, step-by-step procedures, practical examples, exercises, and assessments based on {cost_optimization} settings for {skill_level} learners.",
+    goal="Generate comprehensive tutorial book chapters for assigned sections of {topic}. Create detailed, self-contained book chapters including theoretical explanations, step-by-step procedures, practical examples, exercises, and assessments tailored to {skill_level} learners and the available study time of {time_commitment}.",
         backstory="""You are a specialized tutorial book author and educational content creator. 
     You excel at producing comprehensive book chapters that serve as complete guides 
     for learners. You understand how to create book content at different depth levels 
@@ -14,5 +14,5 @@ def get_chapter_creator_2() -> Agent:
     need to master their assigned chapters.""",
         verbose=True,
         allow_delegation=False,
-        llm=get_llm(),
+        llm=get_llm("chapter_creator_2"),
     )
